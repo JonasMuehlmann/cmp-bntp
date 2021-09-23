@@ -2,20 +2,29 @@
 local source = {}
 local tags = require('cmp_productivity.tags')
 
----- TODO: Find a good way to gurantee up to date tags:
+
+-- TODO: Find a good way to gurantee up to date tags:
 -- Reacting to db changes?
 -- Checking for new tags every few seconds?
 source.update_tags = function(self)
-    source.items = tags.get_tags()
+    local tags = tags.get_tags()
+
+    for _, tag in ipairs(tags) do
+        table.insert(self.items, {label=tag})
+    end
 end
+
 
 ---Source constructor.
 source.new = function()
-  local self = setmetatable({}, { __index = source })
-  self.items = nil
+    local self = setmetatable({}, { __index = source })
+    self.items = {}
 
-  return self
+    self:update_tags()
+
+    return self
 end
+
 
 -- ---Return the source is available or not.
 -- ---@return boolean
@@ -30,7 +39,5 @@ end
 function source:complete(params, callback)
   callback(self.items)
 end
-
-source.update_tags()
 
 return source
