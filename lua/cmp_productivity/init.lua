@@ -13,7 +13,6 @@ end
 source.new = function()
   local self = setmetatable({}, { __index = source })
   self.items = nil
-  self.update_tags()
 
   return self
 end
@@ -31,5 +30,7 @@ end
 function source:complete(params, callback)
   callback(self.items)
 end
+
+source.update_tags()
 
 return source
