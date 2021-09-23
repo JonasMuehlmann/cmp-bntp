@@ -1,1 +1,1 @@
-require('cmp').register_source(require'cmp_productivity'.new())
+require('cmp').register_source('productivity', require'cmp_productivity'.new())
