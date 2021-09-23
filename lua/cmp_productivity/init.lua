@@ -6,7 +6,7 @@ local tags = require('cmp_productivity.tags')
 -- Reacting to db changes?
 -- Checking for new tags every few seconds?
 source.update_tags = function(self)
-    self.items = tags.get_tags()
+    source.items = tags.get_tags()
 end
 
 ---Source constructor.

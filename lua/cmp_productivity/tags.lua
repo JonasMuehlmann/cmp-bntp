@@ -1,9 +1,13 @@
-function get_tags()
+local tags = {}
+
+tags.get_tags = function(self)
     local handle = assert(io.popen('tagmanager list', 'r'))
 
-    local tags = handle:read('*all')
+    local output = handle:read('*all')
 
     handle:close()
 
-    return tags
+    return output 
 end
+
+return tags
