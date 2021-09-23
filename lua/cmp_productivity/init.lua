@@ -1,9 +1,20 @@
 -- https://github.com/hrsh7th/nvim-cmp#source-creation
 local source = {}
+local tags = require('cmp_productivity.tags')
+
+---- TODO: Find a good way to gurantee up to date tags:
+-- Reacting to db changes?
+-- Checking for new tags every few seconds?
+source.update_tags = function(self)
+    self.items = tags.get_tags()
+end
 
 ---Source constructor.
 source.new = function()
   local self = setmetatable({}, { __index = source })
+  self.items = nil
+  self.update_tags()
+
   return self
 end
 
@@ -18,20 +29,7 @@ end
 -- @param params cmp.SourceCompletionApiParams
 -- @param callback fun(response: lsp.CompletionResponse|nil)
 function source:complete(params, callback)
-  callback({
-    { label = 'January' },
-    { label = 'February' },
-    { label = 'March' },
-    { label = 'April' },
-    { label = 'May' },
-    { label = 'June' },
-    { label = 'July' },
-    { label = 'August' },
-    { label = 'September' },
-    { label = 'October' },
-    { label = 'November' },
-    { label = 'December' },
-  })
+  callback(self.items)
 end
 
 return source
