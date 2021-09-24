@@ -1,6 +1,6 @@
 -- https://github.com/hrsh7th/nvim-cmp#source-creation
 local source = {}
-local tags = require('cmp_productivity.tags')
+local tags = require('cmp_bntp.tags')
 
 
 -- TODO: Find a good way to gurantee up to date tags:

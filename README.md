@@ -1,12 +1,12 @@
-# cmp_productivity
-nvim-cmp source for https://github.com/JonasMuehlmann/productivity.go
+# cmp-bntp
+nvim-cmp source for https://github.com/JonasMuehlmann/bntp.go
 
 # Setup
 
 ```lua
 require'cmp'.setup {
   sources = {
-    { name = 'productivity' }
+    { name = 'bntp' }
   }
 }
 ```
