@@ -1,7 +1,7 @@
 local tags = {}
 
-tags.get_tags = function(self)
-    local handle = assert(io.popen('tagmanager list', 'r'))
+tags.get_tags = function(_)
+    local handle = assert(io.popen('bntp.go tag list --path-format', 'r'))
 
     local output_iter = handle:lines()
 
@@ -9,7 +9,7 @@ tags.get_tags = function(self)
 
     for line in output_iter do
       table.insert(lines, line)
-    end 
+    end
 
     handle:close()
 

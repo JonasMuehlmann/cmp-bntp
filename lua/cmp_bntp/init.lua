@@ -36,7 +36,7 @@ end
 --   If you want to abort completion, just call the callback without arguments.
 -- @param params cmp.SourceCompletionApiParams
 -- @param callback fun(response: lsp.CompletionResponse|nil)
-function source:complete(params, callback)
+function source:complete(_, callback)
   callback(self.items)
 end
 
